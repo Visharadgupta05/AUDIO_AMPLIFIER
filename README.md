@@ -189,3 +189,13 @@ This is a common drawback of Class-B amplifiers and reduces their linearity comp
 
 <img width="1278" height="695" alt="image" src="https://github.com/user-attachments/assets/1245980b-03b5-4d55-89c7-08938add8d79" />
 
+
+# CLASS - AB AUDIO AMPLIFIER
+
+
+
+
+
+
+
+
