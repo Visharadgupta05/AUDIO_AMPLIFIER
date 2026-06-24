@@ -112,3 +112,130 @@ In this circuit, the 2N2222 (NPN) transistor conducts during the positive half-c
 
 Unlike a Class-A amplifier, where the transistor remains ON all the time, the transistors in a Class-B amplifier are OFF when no signal is present. This significantly reduces power dissipation and improves efficiency.
 
+Calculations
+Voltage Gain
+
+Input peak voltage:
+
+Vin	=3V
+
+Output peak voltage (from simulation):
+
+Vout ≈2.2V
+
+Voltage gain:
+
+Av = Vout / Vin
+Av = 2.2 / 3 =0.73
+
+The circuit acts mainly as a power amplifier (current buffer) rather than a voltage amplifier, so the voltage gain is slightly less than 1.
+
+DC Power Consumed
+
+Supply voltage:
+
+VCC = 12V
+
+Average supply current from LTspice:
+
+IDC = 80.88mA
+IDC = 0.08088A
+
+DC power drawn from the supply:
+
+PDC = VCC × IDC
+	
+PDC = 12×0.08088
+PDC = 0.971W
+
+Output Power
+
+Load resistance:
+
+RL = 8Ω
+
+Output peak voltage:
+
+Vp =2.2V
+
+Output RMS voltage:
+
+V RMS = Vp / 1.414
+      =1.56V
+
+Power delivered to the load:
+
+P
+out
+	​
+
+=
+R
+L
+	​
+
+V
+RMS
+2
+	​
+
+	​
+
+P
+out
+	​
+
+=
+8
+(1.56)
+2
+	​
+
+P
+out
+	​
+
+=0.304W
+Efficiency
+η=
+P
+DC
+	​
+
+P
+out
+	​
+
+	​
+
+×100
+η=
+0.971
+0.304
+	​
+
+×100
+η=31.3%
+Result
+Voltage Gain:
+A
+v
+	​
+
+≈0.73
+Output Power:
+P
+out
+	​
+
+≈0.30W
+Efficiency:
+η≈31%
+
+This efficiency is much higher than the Class-A amplifier because the transistors conduct only during their respective half-cycles, reducing power dissipation.
+
+
+
+
+<img width="1278" height="695" alt="image" src="https://github.com/user-attachments/assets/1245980b-03b5-4d55-89c7-08938add8d79" />
+
