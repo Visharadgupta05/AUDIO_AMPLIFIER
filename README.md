@@ -156,7 +156,7 @@ RL = 8Ω
 
 Output peak voltage:
 
-Vp =2.2V
+Vp = 2.2V
 
 Output RMS voltage:
 
@@ -175,7 +175,7 @@ Efficiency (η) = Pout/Pdc * 100
 
 η = .304 / .971 * 100
 	​
-η=31.3%
+η = 31.3%
 
 
 This efficiency is much higher than the Class-A amplifier because the transistors conduct only during their respective half-cycles, reducing power dissipation.
