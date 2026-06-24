@@ -26,116 +26,66 @@ This is the final circuit
 
 ### Voltage Gain Calculation
 
-### Voltage Gain Calculation
+## Voltage Gain Calculation
 
-The input signal applied to the amplifier was:
+Input voltage:
 
-[
-V_{in} = 10mV = 0.01V
-]
+Vin = 10 mV = 0.01 V
 
-From transient simulation, the output voltage across the load resistor (R_2) was approximately:
+Output voltage (from simulation):
 
-[
-V_{out} \approx 1.6V_{peak}
-]
+Vout ≈ 1.6 V
 
-The voltage gain is therefore:
+Voltage Gain:
 
-[
-A_v = \frac{V_{out}}{V_{in}}
-]
+Av = Vout / Vin
 
-[
-A_v = \frac{1.6}{0.01}
-]
+Av = 1.6 / 0.01
 
-[
-A_v \approx 160
-]
+Av ≈ 160
 
-Thus, the designed Class-A amplifier achieved a voltage gain of approximately **160 V/V**.
+Therefore, the Class-A amplifier achieved a voltage gain of approximately **160 V/V**.
 
 ---
 
-### Efficiency Calculation
+## Efficiency Calculation
 
-From the DC operating point analysis:
+From DC operating-point analysis:
 
-[
-V_{CC}=12V
-]
+VCC = 12 V
 
-[
-I_{CC}=1.611mA
-]
+ICC = 1.611 mA
 
-The DC power consumed from the supply is:
+DC power consumed:
 
-[
-P_{DC}=V_{CC}\times I_{CC}
-]
+PDC = VCC × ICC
 
-[
-P_{DC}=12\times1.611mA
-]
+PDC = 12 × 1.611 mA
 
-[
-P_{DC}=19.33mW
-]
+PDC = 19.33 mW
 
-The measured output voltage amplitude across the load resistor was approximately:
+Output RMS voltage:
 
-[
-V_{out(peak)}=1.6V
-]
+Vrms = 1.13 V
 
-Hence,
+Load resistance:
 
-[
-V_{out(rms)}=\frac{V_{out(peak)}}{\sqrt{2}}
-]
+RL = 10 kΩ
 
-[
-V_{out(rms)}=\frac{1.6}{1.414}
-]
+Output power:
 
-[
-V_{out(rms)}\approx1.13V
-]
+Pout = Vrms² / RL
 
-For the load resistance:
+Pout = (1.13)² / 10000
 
-[
-R_L=10k\Omega
-]
+Pout = 0.128 mW
 
-The AC output power delivered to the load is:
+Efficiency:
 
-[
-P_{out}=\frac{V_{out(rms)}^2}{R_L}
-]
+η = (Pout / PDC) × 100
 
-[
-P_{out}=\frac{(1.13)^2}{10000}
-]
+η = (0.128 / 19.33) × 100
 
-[
-P_{out}\approx0.128mW
-]
+η = 0.66%
 
-Therefore, the efficiency is:
-
-[
-\eta=\frac{P_{out}}{P_{DC}}\times100
-]
-
-[
-\eta=\frac{0.128}{19.33}\times100
-]
-
-[
-\eta\approx0.66%
-]
-
-The efficiency is low because the transistor remains biased in the active region throughout the entire input cycle and continuously draws power from the supply even when no signal is present. This is a characteristic drawback of Class-A amplifiers, although it provides excellent linearity and very low distortion.
+Therefore, the amplifier achieved an efficiency of approximately **0.66%**.
