@@ -106,4 +106,9 @@ Its components :--
 8. V3 (12 V): DC power supply for the amplifier.
 9. V4 (SINE(0 3 1k)): 1 kHz sinusoidal input signal
 
+A Class-B amplifier is designed to improve efficiency by allowing each transistor to conduct for only half of the input signal cycle (180°).
+
+In this circuit, the 2N2222 (NPN) transistor conducts during the positive half-cycle of the input signal, while the 2N2907 (PNP) transistor conducts during the negative half-cycle. Together, they reproduce the complete output waveform at the load.
+
+Unlike a Class-A amplifier, where the transistor remains ON all the time, the transistors in a Class-B amplifier are OFF when no signal is present. This significantly reduces power dissipation and improves efficiency.
 
