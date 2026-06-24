@@ -3,93 +3,105 @@ This project involves the design and simulation of Class-A, Class-B, and Class-A
 
 # CLASS - A AUDIO AMPLIFIER
 
-Here are its components : --
-1. V1 (12 V DC Supply): Provides the power required for the amplifier to operate.
-2. V2 (Audio Input Signal): Generates a small 1 kHz sinusoidal signal that is amplified by the circuit.
-3. Q1 (2N3904 Transistor): Acts as the main amplifying device. Small changes at the base produce larger changes at the collector.
-4. R5 (47 kΩ) and R6 (10 kΩ): Form a voltage-divider bias network that sets the transistor's operating point in the active region for Class-A operation.
-5. R1 (1 kΩ Emitter Resistor): Stabilizes the transistor current and improves thermal stability by preventing large current variations.
-6. C3 (100 µF Emitter Bypass Capacitor): Bypasses R1 for AC signals, reducing negative feedback and increasing voltage gain.
-7. R4 (4.7 kΩ Collector Resistor): Converts collector current variations into output voltage variations, producing amplification.
-8. C1 (100 µF Input Coupling Capacitor): Couples the AC input signal to the transistor while isolating the bias network from the signal source.
-9. C2 (10 µF Output Coupling Capacitor): Blocks the DC collector voltage and allows only the amplified AC signal to reach the load.
-10. R2 (10 kΩ Load Resistor): Represents the output load and receives the amplified signal.
+This project implements a two-stage RC-coupled Class-A audio amplifier using 2N3904 NPN transistors and was designed and simulated in LTspice. The aim was to amplify a low-level audio signal while maintaining Class-A operation,
+where the transistor conducts throughout the entire input cycle.
 
+The amplifier uses two common-emitter stages connected through coupling capacitors. The first stage amplifies the weak input signal, while the second stage provides additional voltage gain. Capacitors are used to block DC between stages and allow only the AC audio signal to pass.
 
-Initially, the amplifier produced a distorted output due to improper biasing. To improve linearity, the bias network was modified by changing R5 from 100 kΩ to 47 kΩ and R6 from 22 kΩ to 10 kΩ. The emitter resistor was increased from 470 Ω to 1 kΩ to improve stability, while the collector resistor was reduced from 10 kΩ to 4.7 kΩ to obtain a better collector operating point. These changes established a suitable quiescent bias point, allowing the transistor to remain in the active region throughout the signal cycle
-This was the initial circuit : -- 
-<img width="2047" height="1143" alt="image" src="https://github.com/user-attachments/assets/1632f185-6550-42cf-96f3-fc454181a782" />
+## Circuit Description
+Stage 1: Common-Emitter Amplifier
+1. Q6 (2N3904) acts as the first amplification stage.
+2. R16 and R14 form a voltage-divider network to bias the transistor.
+3. R15 is the collector resistor.
+4. R12 is the emitter resistor used for thermal stability.
+5. C10 bypasses the emitter resistor for AC signals, increasing gain.
+6. C8 couples the input audio signal to the transistor base while blocking DC.
+   
+Stage 2: Common-Emitter Amplifier
+1. The amplified output of Stage 1 is coupled to Stage 2 through C9.
+2. Q7 (2N3904) provides additional amplification.
+3. R13, R18, and R19 establish the operating point and stabilize the transistor.
+4. The transistor remains in the active region, ensuring Class-A operation.
+   
+Output Stage
+1. C11 (1000 µF) acts as the output coupling capacitor.
+2. It blocks DC from reaching the load while allowing the amplified AC signal to pass.
+3. The output is taken across the load resistor.
 
-This is the final circuit
-<img width="1271" height="697" alt="image" src="https://github.com/user-attachments/assets/c5dd66fb-ed06-4d61-88f7-17d1eedee120" />
+Vout (across RLoad)
+<img width="728" height="291" alt="image" src="https://github.com/user-attachments/assets/cff0531a-e8f3-4658-a2bf-a769d504fc98" />
+
+IDC (flowing through 12 V DC supply)
+<img width="1270" height="678" alt="image" src="https://github.com/user-attachments/assets/cb157e9a-16a4-4f71-a6c2-1be610d0bbbe" />
 
 
 
 ## Calculations
+## Voltage Gain Calculation
 
-Input voltage:
+Voltage gain is given by:
 
-Vin = 10 mV = 0.01 V
+Av = Vout/ Vin
+	​
+Substituting measured values:
 
-Output voltage (from simulation):
+Av = 1.05 /0.005
+	​
+Av = 210
 
-Vout ≈ 1.6 V
+Therefore:
 
-Voltage Gain:
+Voltage Gain ≈ 210 V/V
 
-Av = Vout / Vin
+Gain in decibels:
 
-Av = 1.6 / 0.01
+Av(dB)=20log(210)
 
-Av ≈ 160
+Av(dB)≈46.4dB
 
-Therefore, the Class-A amplifier achieved a voltage gain of approximately **160 V/V**.
+DC Power Consumption
 
----
+From LTspice:
 
-## Efficiency Calculation
+IDC = 4.68mA
 
-From DC operating-point analysis:
+Supply voltage:
 
-VCC = 12 V
+VCC = 12V
 
-ICC = 1.611 mA
+Therefore:
 
-DC power consumed:
+PDC = VCC × IDC	​
 
-PDC = VCC × ICC
+PDC = 12×4.68mA
 
-PDC = 12 × 1.611 mA
-
-PDC = 19.33 mW
+PDC = 56.2mW
+Output Power
 
 Output RMS voltage:
 
-Vrms = 1.13 V
+Vrms = Vpeak/root(2)
+	
+Vrms = 1.05/1.414
+	  =0.742V
 
-Load resistance:
+Output power delivered to load:
 
-RL = 10 kΩ
+Pout = (Vrms)^2 / Rload
+	
+Pout = (0.742)^2 / 1000
 
-Output power:
+Pout ≈ 0.55mW
 
-Pout = Vrms² / RL
+## Efficiency Calculation
 
-Pout = (1.13)² / 10000
+Efficiency is given by:
 
-Pout = 0.128 mW
+η = Pout/Pdc * 100
 
-Efficiency:
+η = 0.55mW / 56.2mW * 100
 
-η = (Pout / PDC) × 100
-
-η = (0.128 / 19.33) × 100
-
-η = 0.66%
-
-Therefore, the amplifier achieved an efficiency of approximately **0.66%**.
-
-The efficiency of the amplifier is low because the transistor remains ON throughout the entire signal cycle and continuously consumes power from the supply. Most of this power is dissipated as heat, while only a small portion is delivered to the load. This is a common characteristic of Class-A amplifiers and is the trade-off for their high linearity and low distortion.
+η≈0.98%
 
 
 # CLASS - B AUDIO AMPLIFIER
