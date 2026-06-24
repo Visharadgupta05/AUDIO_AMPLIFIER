@@ -170,8 +170,8 @@ Pout =  (Vrms) ^ 2/RL
 Pout = (1.56)^2 / 8
 
 Pout = 0.304W
-Efficiency (η) = Pout/Pdc * 100
 
+Efficiency (η) = Pout/Pdc * 100
 
 η = .304 / .971 * 100
 	​
