@@ -181,7 +181,11 @@ Efficiency (η) = Pout/Pdc * 100
 This efficiency is much higher than the Class-A amplifier because the transistors conduct only during their respective half-cycles, reducing power dissipation.
 
 
+But here we can see there is a small distortion in output waveform . That is called crossover distortion. 
 
+This occurs because the NPN and PNP transistors require approximately 0.7 V of base-emitter voltage before they begin conducting. As the input signal passes through zero, both transistors remain OFF for a short interval, 
+creating a dead zone where the output does not accurately follow the input.
+This is a common drawback of Class-B amplifiers and reduces their linearity compared to Class-A amplifiers.
 
 <img width="1278" height="695" alt="image" src="https://github.com/user-attachments/assets/1245980b-03b5-4d55-89c7-08938add8d79" />
 
