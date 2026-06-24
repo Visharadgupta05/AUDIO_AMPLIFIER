@@ -165,72 +165,18 @@ V RMS = Vp / 1.414
 
 Power delivered to the load:
 
-P
-out
-	​
+Pout =  (Vrms) ^ 2/RL
 
-=
-R
-L
-	​
+Pout = (1.56)^2 / 8
 
-V
-RMS
-2
-	​
+Pout = 0.304W
+Efficiency (η) = Pout/Pdc * 100
 
-	​
 
-P
-out
+η = .304 / .971 * 100
 	​
-
-=
-8
-(1.56)
-2
-	​
-
-P
-out
-	​
-
-=0.304W
-Efficiency
-η=
-P
-DC
-	​
-
-P
-out
-	​
-
-	​
-
-×100
-η=
-0.971
-0.304
-	​
-
-×100
 η=31.3%
-Result
-Voltage Gain:
-A
-v
-	​
 
-≈0.73
-Output Power:
-P
-out
-	​
-
-≈0.30W
-Efficiency:
-η≈31%
 
 This efficiency is much higher than the Class-A amplifier because the transistors conduct only during their respective half-cycles, reducing power dissipation.
 
