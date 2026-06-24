@@ -28,6 +28,9 @@ Output Stage
 2. It blocks DC from reaching the load while allowing the amplified AC signal to pass.
 3. The output is taken across the load resistor.
 
+Class A circuit
+<img width="1263" height="657" alt="image" src="https://github.com/user-attachments/assets/cd3067ad-2b95-423b-9f4d-72a94a8fdd59" />
+
 Vout (across RLoad)
 <img width="728" height="291" alt="image" src="https://github.com/user-attachments/assets/cff0531a-e8f3-4658-a2bf-a769d504fc98" />
 
