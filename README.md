@@ -1,9 +1,9 @@
 # AUDIO_AMPLIFIER
-This project involves the design and simulation of Class-A, Class-B, and Class-AB audio power amplifiers using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
+This project involves the design and simulation of Class-A , Class B and Class-AB audio power amplifiers of small input signals, using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
 
 # CLASS - A AUDIO AMPLIFIER
 
-This project implements a two-stage RC-coupled Class-A audio amplifier using 2N3904 NPN transistors and was designed and simulated in LTspice. The aim was to amplify a low-level audio signal while maintaining Class-A operation,
+This part implements a two-stage RC-coupled Class-A audio amplifier using 2N3904 NPN transistors and was designed and simulated in LTspice. The aim was to amplify a low-level audio signal while maintaining Class-A operation,
 where the transistor conducts throughout the entire input cycle.
 
 The amplifier uses two common-emitter stages connected through coupling capacitors. The first stage amplifies the weak input signal, while the second stage provides additional voltage gain. Capacitors are used to block DC between stages and allow only the AC audio signal to pass.
@@ -108,102 +108,112 @@ Efficiency is given by:
 η≈0.98%
 
 
+## DISADVANTAGES
+The main limitation of the designed Class-A audio amplifier is its low efficiency, as the transistors remain conducting throughout the entire input cycle, resulting in continuous power consumption even when no signal is present. A significant portion of the supplied power is dissipated as heat rather than being delivered to the load. The amplifier is also intended for small-signal operation and therefore cannot directly drive low-impedance loads such as 8 Ω speakers without an additional power output stage. Furthermore, the use of large coupling and bypass capacitors increases circuit size, making the design less suitable for high-power or portable audio applications
+
+
+
+
 # CLASS - B AUDIO AMPLIFIER
+A Class B amplifier uses two transistors operating in a push-pull configuration. One transistor amplifies the positive half-cycle of the input signal, while the other amplifies the negative half-cycle. Each transistor conducts for approximately 180° of the input cycle, reducing the power wasted compared to a Class A amplifier.
 
-Its components :--
+In this design, the first transistor stage provides voltage amplification, while the complementary NPN-PNP transistor pair acts as the output stage. The output coupling capacitor blocks DC and allows only the amplified AC signal to reach the load.
 
-1. Q2 (2N2222): NPN transistor that amplifies the positive half-cycle of the input signal.
-2. Q3 (2N2907): PNP transistor that amplifies the negative half-cycle of the input signal.
-3. R10 (10 kΩ): Upper bias resistor that helps set the transistor operating point.
-4. R8 (10 kΩ): Lower bias resistor that completes the bias network.
-5. C4 (100 µF): Input coupling capacitor that passes AC signals and blocks DC.
-6. C5 (470 µF): Output coupling capacitor that passes the amplified AC signal to the load.
-7. R7 (8 Ω): Represents the speaker/load connected to the amplifier output.
-8. V3 (12 V): DC power supply for the amplifier.
-9. V4 (SINE(0 3 1k)): 1 kHz sinusoidal input signal
+Components Used
+2N3904 (NPN transistor)
+2N3906 (PNP transistor)
+Resistors for biasing
+Coupling capacitors (100 µF, 1000 µF)
+12 V DC supply
+1 kHz sinusoidal input signal
+Load resistor
 
-A Class-B amplifier is designed to improve efficiency by allowing each transistor to conduct for only half of the input signal cycle (180°).
+Image of the circuit : --
+<img width="938" height="351" alt="image" src="https://github.com/user-attachments/assets/7980cc3a-27ca-4bf6-a284-4142340d531f" />
 
-In this circuit, the 2N2222 (NPN) transistor conducts during the positive half-cycle of the input signal, while the 2N2907 (PNP) transistor conducts during the negative half-cycle. Together, they reproduce the complete output waveform at the load.
+Output voltage waveform across Rload :--
+<img width="1261" height="439" alt="image" src="https://github.com/user-attachments/assets/c9140367-a5a0-47a2-9a6d-ef9e9b781909" />
 
-Unlike a Class-A amplifier, where the transistor remains ON all the time, the transistors in a Class-B amplifier are OFF when no signal is present. This significantly reduces power dissipation and improves efficiency.
-
-Calculations
+## CALCULATIONS :--
 Voltage Gain
+Av = Vout(pk)/ Vin(pk)
+	
+Av = 1.45 / 0.01
+	​
+Av = 145
+	​
+or in dB:
 
-Input peak voltage:
+Av(dB) = 20log(145)
 
-Vin	=3V
+Av(dB)≈43.2dB
 
-Output peak voltage (from simulation):
+From the waveform:
 
-Vout ≈2.2V
+IDC = 1.6114 mA
 
-Voltage gain:
-
-Av = Vout / Vin
-Av = 2.2 / 3 =0.73
-
-The circuit acts mainly as a power amplifier (current buffer) rather than a voltage amplifier, so the voltage gain is slightly less than 1.
-
-DC Power Consumed
-
-Supply voltage:
+and
 
 VCC = 12V
 
-Average supply current from LTspice:
+So the DC power drawn from the supply is:
 
-IDC = 80.88mA
-IDC = 0.08088A
-
-DC power drawn from the supply:
-
-PDC = VCC × IDC
-	
-PDC = 12×0.08088
-PDC = 0.971W
-
-Output Power
-
-Load resistance:
-
-RL = 8Ω
-
-Output peak voltage:
-
-Vp = 2.2V
-
-Output RMS voltage:
-
-V RMS = Vp / 1.414
-      =1.56V
-
-Power delivered to the load:
-
-Pout =  (Vrms) ^ 2/RL
-
-Pout = (1.56)^2 / 8
-
-Pout = 0.304W
-
-Efficiency (η) = Pout/Pdc * 100
-
-η = .304 / .971 * 100
+PDC = VCC * IDC
 	​
-η = 31.3%
+
+PDC = 12×1.6114×10 ^(−3)
+
+PDC = 19.34 mW
 
 
-This efficiency is much higher than the Class-A amplifier because the transistors conduct only during their respective half-cycles, reducing power dissipation.
+From the waveform:
+
+Vout(pk) ≈1.45V
+
+Therefore
+
+Vrms = Vout(pk) / root(2)
+	​
+Vrms = 1.45/1.414 = 1.025 V
+
+Load:
+
+RL = 1kΩ
+
+Output power:
+
+Pout = RL * (Vrms)^2	​
+
+Pout =1000 * (1.025)^2
+	​
+Pout ≈ 1.05 mW
 
 
-But here we can see there is a small distortion in output waveform . That is called crossover distortion. 
+Efficiency
+η = Pout/PDC * 10
 
-This occurs because the NPN and PNP transistors require approximately 0.7 V of base-emitter voltage before they begin conducting. As the input signal passes through zero, both transistors remain OFF for a short interval, 
-creating a dead zone where the output does not accurately follow the input.
-This is a common drawback of Class-B amplifiers and reduces their linearity compared to Class-A amplifiers.
+η≈5.4%
 
-<img width="1278" height="695" alt="image" src="https://github.com/user-attachments/assets/1245980b-03b5-4d55-89c7-08938add8d79" />
+## Why the efficiency is so low?
+The efficiency of the simulated Class B amplifier is low because it is designed as a small-signal amplifier with a high-resistance load. 
+Most of the power is consumed by the biasing and voltage amplification stages, while only a small fraction is delivered to the load. 
+Higher efficiencies are achieved in Class B power amplifiers driving low-resistance loads such as speakers.
+
+## Crossover Distortion in Class B Amplifier
+
+A Class B amplifier uses two transistors in a push-pull configuration.
+One transistor amplifies the positive half of the input signal, while the other amplifies the negative half. Ideally, the output should be a smooth reproduction of the input waveform.
+
+However, a silicon transistor requires approximately 0.7 V between its base and emitter before it starts conducting. 
+Around the zero-crossing region of the input signal, neither transistor conducts because the input voltage is smaller than this threshold.
+As a result, a small portion of the waveform near zero volts is not amplified, creating a notch or dead zone in the output waveform.
+
+The Class B amplifier achieved approximately 5.4% efficiency,
+representing a significant improvement over the Class A amplifier (~1% efficiency),
+demonstrating the trade-off between efficiency and crossover distortion in audio amplifier designs
+
+
+To overcome this problem, Class AB amplifiers are used
 
 
 # CLASS - AB AUDIO AMPLIFIER
