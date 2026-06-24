@@ -24,9 +24,8 @@ This is the final circuit
 <img width="1271" height="697" alt="image" src="https://github.com/user-attachments/assets/c5dd66fb-ed06-4d61-88f7-17d1eedee120" />
 
 
-### Voltage Gain Calculation
 
-## Voltage Gain Calculation
+## Calculations
 
 Input voltage:
 
@@ -91,3 +90,20 @@ Efficiency:
 Therefore, the amplifier achieved an efficiency of approximately **0.66%**.
 
 The efficiency of the amplifier is low because the transistor remains ON throughout the entire signal cycle and continuously consumes power from the supply. Most of this power is dissipated as heat, while only a small portion is delivered to the load. This is a common characteristic of Class-A amplifiers and is the trade-off for their high linearity and low distortion.
+
+
+# CLASS - B AUDIO AMPLIFIER
+
+Its components :--
+
+1. Q2 (2N2222): NPN transistor that amplifies the positive half-cycle of the input signal.
+2. Q3 (2N2907): PNP transistor that amplifies the negative half-cycle of the input signal.
+3. R10 (10 kΩ): Upper bias resistor that helps set the transistor operating point.
+4. R8 (10 kΩ): Lower bias resistor that completes the bias network.
+5. C4 (100 µF): Input coupling capacitor that passes AC signals and blocks DC.
+6. C5 (470 µF): Output coupling capacitor that passes the amplified AC signal to the load.
+7. R7 (8 Ω): Represents the speaker/load connected to the amplifier output.
+8. V3 (12 V): DC power supply for the amplifier.
+9. V4 (SINE(0 3 1k)): 1 kHz sinusoidal input signal
+
+
