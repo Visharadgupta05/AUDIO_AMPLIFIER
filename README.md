@@ -89,3 +89,5 @@ Efficiency:
 η = 0.66%
 
 Therefore, the amplifier achieved an efficiency of approximately **0.66%**.
+
+The efficiency of the amplifier is low because the transistor remains ON throughout the entire signal cycle and continuously consumes power from the supply. Most of this power is dissipated as heat, while only a small portion is delivered to the load. This is a common characteristic of Class-A amplifiers and is the trade-off for their high linearity and low distortion.
