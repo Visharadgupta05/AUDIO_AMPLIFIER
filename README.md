@@ -1,5 +1,5 @@
 # AUDIO_AMPLIFIER
-This project involves the design and simulation of 1 W Class-A, Class-B, and Class-AB audio power amplifiers using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
+This project involves the design and simulation of Class-A, Class-B, and Class-AB audio power amplifiers using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
 
 # CLASS - A AUDIO AMPLIFIER
 
@@ -22,3 +22,41 @@ This was the initial circuit : --
 
 This is the final circuit
 <img width="770" height="258" alt="image" src="https://github.com/user-attachments/assets/f7346924-9fa2-46f8-8c1e-5460e483d51b" />
+
+### Voltage Gain Calculation
+
+The voltage gain of the Class-A amplifier was calculated using the ratio of output voltage amplitude to input voltage amplitude.
+
+Input Signal Amplitude:
+
+Vin = 10 mV = 0.01 V
+
+From the LTspice waveform:
+
+Vout(max) ≈ 6.9 V
+
+Vout(min) ≈ 3.7 V
+
+Output Signal Amplitude:
+
+Vout = (Vout(max) − Vout(min))/2
+
+Vout = (6.9 − 3.7)/2
+
+Vout = 1.6 V
+
+Voltage Gain:
+
+Av = Vout / Vin
+
+Av = 1.6 / 0.01
+
+Av ≈ 160 V/V
+
+Voltage Gain in Decibels:
+
+Av(dB) = 20 log10(160)
+
+Av(dB) ≈ 44 dB
+
+Thus, the Class-A amplifier achieved a voltage gain of approximately 160 V/V (44 dB), demonstrating significant amplification of a small input audio signal while maintaining a nearly sinusoidal output waveform.
