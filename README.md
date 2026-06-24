@@ -21,7 +21,8 @@ This was the initial circuit : --
 <img width="2047" height="1143" alt="image" src="https://github.com/user-attachments/assets/1632f185-6550-42cf-96f3-fc454181a782" />
 
 This is the final circuit
-<img width="770" height="258" alt="image" src="https://github.com/user-attachments/assets/f7346924-9fa2-46f8-8c1e-5460e483d51b" />
+<img width="1271" height="697" alt="image" src="https://github.com/user-attachments/assets/c5dd66fb-ed06-4d61-88f7-17d1eedee120" />
+
 
 ### Voltage Gain Calculation
 
