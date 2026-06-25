@@ -1,115 +1,112 @@
 # AUDIO_AMPLIFIER
-This project involves the design and simulation of Class-A , Class B and Class-AB audio power amplifiers of small input signals, using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
+This project involves the design and simulation of Class-A , Class B and Class-AB audio power amplifiers, using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
 
 # CLASS - A AUDIO AMPLIFIER
 
-This part implements a two-stage RC-coupled Class-A audio amplifier using 2N3904 NPN transistors and was designed and simulated in LTspice. The aim was to amplify a low-level audio signal while maintaining Class-A operation,
-where the transistor conducts throughout the entire input cycle.
+Designed and simulated a single-ended Class A power amplifier using BJTs in LTspice. The output transistor was biased to conduct throughout the full input cycle (360° conduction), providing highly linear amplification with minimal distortion. The project analyzed voltage gain, output power, quiescent current, and efficiency while demonstrating the trade-off between superior signal fidelity and lower efficiency.
 
-The amplifier uses two common-emitter stages connected through coupling capacitors. The first stage amplifies the weak input signal, while the second stage provides additional voltage gain. Capacitors are used to block DC between stages and allow only the AC audio signal to pass.
 
 ## Circuit Description
-Stage 1: Common-Emitter Amplifier
-1. Q6 (2N3904) acts as the first amplification stage.
-2. R16 and R14 form a voltage-divider network to bias the transistor.
-3. R15 is the collector resistor.
-4. R12 is the emitter resistor used for thermal stability.
-5. C10 bypasses the emitter resistor for AC signals, increasing gain.
-6. C8 couples the input audio signal to the transistor base while blocking DC.
-   
-Stage 2: Common-Emitter Amplifier
-1. The amplified output of Stage 1 is coupled to Stage 2 through C9.
-2. Q7 (2N3904) provides additional amplification.
-3. R13, R18, and R19 establish the operating point and stabilize the transistor.
-4. The transistor remains in the active region, ensuring Class-A operation.
-   
-Output Stage
-1. C11 (1000 µF) acts as the output coupling capacitor.
-2. It blocks DC from reaching the load while allowing the amplified AC signal to pass.
-3. The output is taken across the load resistor.
+Stage-wise Description
+
+1. Input Coupling (C8): Blocks DC from the signal source and passes the AC input.
+2. Bias Network (R16, R14): Establishes the DC operating point for Q6.
+3. Voltage Amplifier (Q6): Provides the initial voltage amplification.
+4. Emitter Network (R12, C10): Stabilizes the bias and increases AC gain through emitter bypassing.
+5. Interstage Coupling (C9): Transfers the amplified AC signal to the output stage while blocking DC.
+6. Output Stage (Q7): Operates in Class A mode and provides power amplification.
+7. Bias Network (R17, R18): Sets the quiescent operating point of Q7 for linear operation.
+8. Collector Load (R13): Determines the collector current and output voltage swing.
+9. Output Coupling Capacitor (C11): Removes the DC component before delivering the amplified signal to the load.
+10. Load (RLoad): Represents the external load across which the amplified output is obtained.
+
+
+OBSERVATIONS : -
+1. Increasing the input signal beyond the amplifier's linear operating range drove the output transistor into saturation and cutoff, causing waveform clipping and distortion. 
+ That is why my output voltage started clipping after 10mV peak suply.
+2. The amplifier was successfully biased to operate in Class A, with the output transistor conducting throughout the entire input cycle (360° conduction).
+3. Proper DC biasing was achieved by setting the collector voltage close to half of the supply voltage, enabling maximum symmetrical output swing.
+4. The output waveform became a clean sinusoid after optimizing the bias network and operating conditions.
+5.  Increasing the supply voltage from 15 V to 24 V increased the available output voltage swing and delayed the onset of clipping.
+6. Increasing the load resistance from 100 Ω to 470 Ω reduced the load current, improving linear operation.
+
 
 Class A circuit
-<img width="728" height="291" alt="image" src="https://github.com/user-attachments/assets/cff0531a-e8f3-4658-a2bf-a769d504fc98" />
+<img width="824" height="418" alt="image" src="https://github.com/user-attachments/assets/61454d68-42fe-4d83-9520-a74a9bf01586" />
 
 
-Vout (across RLoad)
-<img width="1263" height="657" alt="image" src="https://github.com/user-attachments/assets/cd3067ad-2b95-423b-9f4d-72a94a8fdd59" />
-
-IDC (flowing through 12 V DC supply)
-<img width="1270" height="678" alt="image" src="https://github.com/user-attachments/assets/cb157e9a-16a4-4f71-a6c2-1be610d0bbbe" />
+Vout (across RLoad) and current across Rload
+<img width="1274" height="646" alt="image" src="https://github.com/user-attachments/assets/578c2a81-b1a7-40c2-8917-1121ec2542cd" />
 
 
 
 ## Calculations
-## Voltage Gain Calculation
+1. Voltage Gain
 
-Voltage gain is given by:
+The voltage gain is calculated as:
 
-Av = Vout/ Vin
+Av = Vout(rms)/ Vin(rms)
 	​
-Substituting measured values:
+	
+Av = 4.321 / 0.00707
 
-Av = 1.05 /0.005
+Av = 611.31V/V
 	​
-Av = 210
 
-Therefore:
+Voltage gain in decibels:
 
-Voltage Gain ≈ 210 V/V
+Av(dB) = 20log(611.31)
 
-Gain in decibels:
+Av = 55.72dB
+	​
 
-Av(dB)=20log(210)
+2. Input Power
 
-Av(dB)≈46.4dB
+The DC input power supplied to the amplifier is
 
-DC Power Consumption
+Pin ​= VCC × IDC
+	​
+Pin = 24×0.03205
 
-From LTspice:
+Pin = 0.769W
+	​
 
-IDC = 4.68mA
+3. Output Power
 
-Supply voltage:
+The AC output power delivered to the load is
 
-VCC = 12V
+Pout = (Vout(rms))^2 / Rload
 
-Therefore:
+Pout = (4.321)^2 / 470	​
 
-PDC = VCC × IDC	​
+Pout = 0.0397W = 39.7mW
+	​
 
-PDC = 12×4.68mA
+4. Efficiency
 
-PDC = 56.2mW
-Output Power
+The efficiency of the amplifier is
 
-Output RMS voltage:
+η = Pout/Pin * 100
+	​
+η = 0.0397 / 0.769 * 100
+	​
+η=5.16%
 
-Vrms = Vpeak/root(2)
-	
-Vrms = 1.05/1.414
-	  =0.742V
 
-Output power delivered to load:
 
-Pout = (Vrms)^2 / Rload
-	
-Pout = (0.742)^2 / 1000
+## NOTE
+The negative sign reported for I(V7) in LTspice indicates the voltage source is supplying power to the circuit. 
+For power and efficiency calculations, the magnitude of the supply current is used.
 
-Pout ≈ 0.55mW
+## RESULTS :--
 
-## Efficiency Calculation
+<img width="368" height="128" alt="image" src="https://github.com/user-attachments/assets/7b4f04d8-e9c6-41b4-ab95-139ce156d7b0" />
 
-Efficiency is given by:
-
-η = Pout/Pdc * 100
-
-η = 0.55mW / 56.2mW * 100
-
-η≈0.98%
 
 
 ## DISADVANTAGES
-The main limitation of the designed Class-A audio amplifier is its low efficiency, as the transistors remain conducting throughout the entire input cycle, resulting in continuous power consumption even when no signal is present. A significant portion of the supplied power is dissipated as heat rather than being delivered to the load. The amplifier is also intended for small-signal operation and therefore cannot directly drive low-impedance loads such as 8 Ω speakers without an additional power output stage. Furthermore, the use of large coupling and bypass capacitors increases circuit size, making the design less suitable for high-power or portable audio applications
+The efficiency is low because the Class A amplifier continuously draws current from the supply, even in the absence of an input signal.
+Most of the supplied power is dissipated as heat in the transistor and collector resistor, while only a small portion is delivered to the load.
 
 
 
@@ -217,6 +214,23 @@ To overcome this problem, Class AB amplifiers are used
 
 
 # CLASS - AB AUDIO AMPLIFIER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
