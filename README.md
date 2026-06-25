@@ -90,22 +90,6 @@ The measured efficiency of 7.88% is characteristic of a resistor-loaded Class A 
 The transistor conducts throughout the entire input cycle (360° conduction) and continuously draws current from the 12 V supply, even when little or no signal is present.
 As a result, a large portion of the input DC power is dissipated as heat in the transistor and collector resistor rather than being delivered to the load.
 
-	​
-
-	
-
-
-
-
-## NOTE
-The negative sign reported for I(V7) in LTspice indicates the voltage source is supplying power to the circuit. 
-For power and efficiency calculations, the magnitude of the supply current is used.
-
-## RESULTS :--
-
-<img width="368" height="128" alt="image" src="https://github.com/user-attachments/assets/7b4f04d8-e9c6-41b4-ab95-139ce156d7b0" />
-
-
 
 ## DISADVANTAGES
 The efficiency is low because the Class A amplifier continuously draws current from the supply, even in the absence of an input signal.
