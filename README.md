@@ -1,5 +1,5 @@
 # AUDIO_AMPLIFIER
-This project involves the design and simulation of Class-A , and Class- B and Class-AB audio power amplifiers, using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, frequency response, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
+This project involves the design and simulation of Class-A , and Class- B and Class-AB audio power amplifiers, using BJT circuits in LTspice. The amplifiers were analyzed and compared based on voltage gain, output power, efficiency, and waveform distortion. Special attention was given to crossover distortion in Class-B amplifiers and its reduction in Class-AB designs using a push-pull output stage. The project highlights the performance trade-offs between amplifier classes and demonstrates the principles of analog audio amplifier design.
 
 # CLASS - A AUDIO AMPLIFIER
 
@@ -10,7 +10,7 @@ This project implements a Class A common-emitter audio amplifier using a BC546B 
 Components Used
 
 1. V5 – 12 V DC Power Supply
-2. V6 – AC Input Signal Source (10 mV, 1 kHz Sine Wave)
+2. V6 – AC Input Signal Source (300 mV, 1 kHz Sine Wave)
 3. Q6 – BC546B NPN Transistor
 4. R10 – 10 kΩ Base Bias Resistor
 5. R9 – 3.3 kΩ Base Bias Resistor
@@ -33,12 +33,12 @@ OBSERVATIONS : -
 
 
 Class A circuit
-<img width="674" height="336" alt="image" src="https://github.com/user-attachments/assets/cf416a1b-fb57-4d50-b46d-fdfe1fa3ff76" />
-
+<img width="698" height="213" alt="image" src="https://github.com/user-attachments/assets/1007109c-1cff-413a-ace9-0a21782c2854" />
 
 
 Vout (across RLoad)  and Vin graph 
-<img width="1250" height="331" alt="image" src="https://github.com/user-attachments/assets/394c97b0-e616-45d0-aeb9-1463aa705681" />
+<img width="1262" height="353" alt="image" src="https://github.com/user-attachments/assets/506e42fd-9034-4f70-a52a-b07f3fca9576" />
+
 
 
 
@@ -49,51 +49,51 @@ Vout (across RLoad)  and Vin graph
 The voltage gain is calculated as:
 
 Av = Vout(rms)/ Vin(rms)
-	​
+	= 2.40/ 0.212
+	= 11.34​
+
+In decibels,
+
+Av(dB) = 20log(1.5377)
+
+Av = 21.09 dB
+
+2. Output Power
+   
+Pout = Vout(rms)^2 / Rload
 	
-Av = 4.321 / 0.00707
-
-Av = 611.31V/V
+Pout = (2.4)^2 / 50
 	​
 
-Voltage gain in decibels:
+=0.11568 W
+​
 
-Av(dB) = 20log(611.31)
+3. Input DC Power
+PDC = VCC × IDC
 
-Av = 55.72dB
+    = 12×0.0122
+​
+    = 1.46 W
 	​
 
-2. Input Power
+5. Efficiency
 
-The DC input power supplied to the amplifier is
+η= Pout/ PDC * 100
 
-Pin ​= VCC × IDC
-	​
-Pin = 24×0.03205
+​η= 0.115/1.46 * 100
 
-Pin = 0.769W
+η = 7.88 % 
 	​
 
-3. Output Power
+## OBSERVATION
+The measured efficiency of 7.88% is characteristic of a resistor-loaded Class A amplifier.
+The transistor conducts throughout the entire input cycle (360° conduction) and continuously draws current from the 12 V supply, even when little or no signal is present.
+As a result, a large portion of the input DC power is dissipated as heat in the transistor and collector resistor rather than being delivered to the load.
 
-The AC output power delivered to the load is
-
-Pout = (Vout(rms))^2 / Rload
-
-Pout = (4.321)^2 / 470	​
-
-Pout = 0.0397W = 39.7mW
 	​
 
-4. Efficiency
+	
 
-The efficiency of the amplifier is
-
-η = Pout/Pin * 100
-	​
-η = 0.0397 / 0.769 * 100
-	​
-η=5.16%
 
 
 
