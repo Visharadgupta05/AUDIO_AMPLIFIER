@@ -268,6 +268,14 @@ PDC = 0.218 W
 η = 35.18 %
 
 
+## OBSERVATIONS
+
+1. The output waveform is smooth and nearly sinusoidal, indicating that crossover distortion has been significantly reduced.
+2. The 1N4148 biasing diodes keep both transistors slightly conducting around the zero-crossing point, ensuring a smooth transition between the NPN and PNP transistors.
+3. The amplifier provides current gain with a voltage gain close to unity, characteristic of a push-pull emitter follower.
+4. Compared to the Class B amplifier, the Class AB amplifier exhibits lower crossover distortion and higher efficiency.
+5. Compared to the Class A amplifier, it offers significantly higher efficiency while maintaining good linearity
+
 
 
 
