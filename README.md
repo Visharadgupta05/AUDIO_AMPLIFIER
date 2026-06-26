@@ -191,19 +191,81 @@ During this interval, the output cannot accurately follow the input, creating a 
 
 
 # CLASS - AB AUDIO AMPLIFIER
+This implements a Class AB push-pull audio amplifier using complementary transistors (BC547C and BC557C) with two silicon diodes (1N4148) for biasing.
+The diodes provide a small forward bias between the transistor bases, allowing both transistors to conduct slightly even when there is no input signal.
+This eliminates the crossover distortion present in Class B amplifiers while maintaining significantly higher efficiency than Class A amplifiers.
+
+Components Used
+1. V3 – 12 V DC Power Supply
+2. V7 – AC Input Signal Source (3 V Peak, 1 kHz Sine Wave)
+3. Q1 – BC547C NPN Transistor
+4. Q2 – BC557C PNP Transistor
+5. D1, D2 – 1N4148 Silicon Diodes (Biasing Diodes)
+6. R1 – 10 kΩ Bias Resistor
+7. R2 – 10 kΩ Bias Resistor
+8. C3 – 100 µF Input Coupling Capacitor
+9. C4 – 100 µF Output Coupling Capacitor
+10. RL3 – 47 Ω Load Resistor
+
+
+## WORKING
+
+The input audio signal is first passed through the input coupling capacitor (C3), which blocks any DC component and allows only the AC signal to reach the amplifier.
+
+The two 1N4148 diodes (D1 and D2) create a small voltage difference between the bases of the BC547C (NPN) and BC557C (PNP) transistors. This keeps both transistors slightly turned on even when there is no input signal.
+
+During the positive half-cycle of the input signal, the NPN transistor (Q1) conducts more and supplies current to the load. During the negative half-cycle, the PNP transistor (Q2) conducts more and drives the load in the opposite direction.
+
+Since both transistors are already slightly conducting near the zero-crossing point, the transition from one transistor to the other is smooth.
+
+
+## CLASS AB IMAGES 
+
+CIRCUIT :-- 
+<img width="1474" height="514" alt="image" src="https://github.com/user-attachments/assets/29dfca8f-ff09-4e5c-a900-0282dbb056d6" />
+ 
+OUTPUT VS INPUT GRAPH :-- 
+<img width="1261" height="311" alt="image" src="https://github.com/user-attachments/assets/c51df34c-a39a-4e1f-813c-fd02db9535fd" />
 
 
 
+## CALCULATIONS :-- 
 
+Voltage Gain
+Av = Vout(rms)/Vin(rms)
+	
+Av = 1.89/2.12
 
+Av = 0.896
+	​
 
+In decibels,
 
+Av (dB) = 20log	(0.896)
 
+Av(dB) = −0.95 dB
+	​
+	
+2. Output Power
+Pout =  Vout(rms)^2	​/ Rload
+	
+Pout  =0.0768 W 
+	​
 
+3. Input DC Power
+PDC = VCC * IDC
+	​
+12 × 0.018 W
 
+PDC = 0.218 W
+	​
 
+4. Efficiency
+η = Pout / PDC * 100​
 
+​η = 0.0768/0.218 * 100
 
+η = 35.18 %
 
 
 
